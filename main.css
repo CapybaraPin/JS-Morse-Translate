@@ -1,0 +1,92 @@
+h1 {
+    font-size: 40px;
+    font-family: Arial, sans-serif;;
+    text-align: center;
+    margin: 0.5em;
+}
+p {
+    font-size: 25px;
+    font-family: Arial, sans-serif;;
+    text-align: center;
+}
+a {
+    font-family: Arial, sans-serif;;
+}
+a:link, a:visited {
+    color: #af69ef;
+}
+textarea {
+    resize: none;
+}
+
+#les_boutons{
+    display: flex;
+    justify-content: center;
+}
+#bouton {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: medium;
+    color: #08e;
+    text-decoration: underline;
+    cursor: pointer;
+}
+#b_trad {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+}
+#entree_texte {
+
+    margin: 0.5em;
+
+}
+#result {
+
+    margin: 0.5em;
+
+}
+#entree_morse {
+
+    margin: 0.5em;
+
+}
+#result2 {
+
+    margin: 0.5em;
+
+}
+#boxes {
+    display: flex;
+    justify-content: center;
+}
+#bouton_trad {
+    margin: 0.2em;
+}
+#bouton_son{
+    margin: 0.2em;
+}
+#espace{
+    margin: 1em;
+}
+
+.darkMode_body {
+    background-color: #202124;
+    color: white;
+}
+
+.lightMode_body {
+    background-color: white;
+    color: black;
+}
+.darkMode_textarea {
+    background-color: #303134;
+    color: white;
+}
+
+.lightMode_textarea {
+    background-color: white;
+    color: black;
+}

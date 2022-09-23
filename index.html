@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>Traducteur de morse</title>
+        <link rel="stylesheet" href="main.css">
+
+    </head>
+    <body>
+
+        <script type="text/javascript" src="func.js"></script>
+        <h1 id="body">Traducteur de morse</h1>
+        <span id="les_boutons">
+            <button id="bouton" type="link" onclick="switchMode()" value="Mode sombre">Mode sombre</button>‎ • ‎<a href="https://github.com/draquodrass/morse_translator" target="_blank" class="external">GitHub</a>
+        </span>
+
+        <p id="body">Alphabet vers morse</p>
+        <div id="b_trad">
+            <input id="bouton_trad" type="button" onclick="traduire()" value="Traduire">
+            <input id="bouton_son" type="button" onclick="jouerSon()" value="Jouer le son">
+        </div>
+        <div id="boxes">
+
+            <textarea id="entree_texte" cols="50" rows="10" placeholder="Texte à traduire"></textarea>
+            <textarea id="result" cols="50" rows="10" placeholder="Traduction"></textarea>
+
+        </div>
+
+        <p id="body">Morse vers alphabet</p>
+        <div id="b_trad">
+            <input id="bouton_trad" type="button" onclick="traduire_morse()" value="Traduire">
+        </div>
+        <div id="boxes">
+
+            <textarea id="entree_morse" cols="50" rows="10" placeholder="Morse à traduire"></textarea>
+            <textarea id="result2" cols="50" rows="10" placeholder="Traduction"></textarea>
+
+        </div>
+    </body>
+</html>
