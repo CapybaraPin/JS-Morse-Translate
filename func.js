@@ -1,4 +1,5 @@
 darkMode = false;
+morseMode = true
 texte_final = "";
 
 var beep_petit = new Audio('./assets/beep_petit.mp3');
@@ -80,7 +81,7 @@ dictionnaire_morse = {
     "-....": "6",
     "--...": "7",
     "---..": "8",
-    "----.": "9",
+    "----": "9",
     "-----": "0"
 }
 
@@ -126,6 +127,22 @@ function switchMode() {
 
 }
 
+function switchMorse() {
+
+    if(morseMode) {
+
+        document.getElementById("b_mode").innerText = "Mode titaah"
+        morseMode = false;
+
+    } else {
+
+        document.getElementById("b_mode").innerText = "Mode caractères"
+        morseMode = true;
+
+    }
+
+}
+
 function traduire() {
 
     texte_final = "";
@@ -134,13 +151,28 @@ function traduire() {
 
     for (let i = 0; i < texte.length; i++) {
 
-        if(Object.keys(dictionnaire).includes(texte[i][0])) {
+        if(morseMode) {
 
-            texte[i] = texte[i].replace(texte[i][0], dictionnaire[texte[i][0]]);
+            if(Object.keys(dictionnaire).includes(texte[i])) {
+
+                texte[i] = texte[i].replace(texte[i], dictionnaire[texte[i]]);
+    
+            } else {
+    
+                texte[i] = "!";
+            }
 
         } else {
 
-            texte[i] = "!";
+            if(Object.keys(dictionnaire).includes(texte[i])) {
+
+                texte[i] = texte[i].replace(texte[i], dictionnaire[texte[i]].replaceAll(".", "ti").replaceAll("-", "taah"));
+    
+            } else {
+    
+                texte[i] = "!";
+            }
+
         }
         
     }
@@ -164,15 +196,31 @@ function traduire_morse() {
 
     for (let i = 0; i < texte_morse.length; i++) {
 
-        if(Object.keys(dictionnaire_morse).includes(texte_morse[i])) {
+        if(morseMode) {
 
-            texte_morse[i] = texte_morse[i].replace(texte_morse[i], dictionnaire_morse[texte_morse[i]]);
+            if(Object.keys(dictionnaire_morse).includes(texte_morse[i])) {
+
+                texte_morse[i] = texte_morse[i].replace(texte_morse[i], dictionnaire_morse[texte_morse[i]]);
+    
+            } else {
+    
+                texte_morse[i] = ""
+    
+            }
 
         } else {
 
-            texte_morse[i] = ""
+            if(Object.keys(dictionnaire_morse).includes(texte_morse[i].replaceAll("ti", ".").replaceAll("taah", "-"))) {
 
-        }
+                texte_morse[i] = texte_morse[i].replace(texte_morse[i], dictionnaire_morse[texte_morse[i].replaceAll("ti", ".").replaceAll("taah", "-")]);
+    
+            } else {
+    
+                texte_morse[i] = ""
+    
+            }
+
+        }    
 
     }
 
@@ -192,23 +240,45 @@ function traduire_morse() {
 
 async function jouerSon() {
 
-    for (let i = 0; i < texte_final.length; i++) {
-        if(texte_final[i] == ".") {
+    if(morseMode) {
 
-            beep_petit.play();
+        for (let i = 0; i < texte_final.length; i++) {
 
-        } else if(texte_final[i] == "-") {
+            if(morseMode) {
+    
+                if(texte_final[i] == ".") {
+    
+                    beep_petit.play();
+        
+                } else if(texte_final[i] == "-") {
+        
+                    beep_long.play();
+        
+                } else if(texte_final[i] == "/") {
+        
+                    await new Promise(r => setTimeout(r, 100));
+        
+                }
+        
+                await new Promise(r => setTimeout(r, 750));
+    
+            }
+        
+        }    
 
-            beep_long.play();
+    } else {
 
-        } else if(texte_final[i] == "/") {
+        if ('speechSynthesis' in window) {
 
-            await new Promise(r => setTimeout(r, 100));
-
+            var msg = new SpeechSynthesisUtterance(document.getElementById("result").value);
+            window.speechSynthesis.speak(msg);
+    
+        } else {
+    
+            alert("Désolé, mais le text-to-speech n'est pas supporté sur ce navigateur :(");
+    
         }
 
-        await new Promise(r => setTimeout(r, 750));
-    
-    }   
+    }
 
 }
