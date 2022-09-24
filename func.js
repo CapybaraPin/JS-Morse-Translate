@@ -1,10 +1,13 @@
 darkMode = false;
 morseMode = true
 texte_final = "";
+click_counter = 0
+limite = 50
 
 var beep_petit = new Audio('./assets/beep_petit.mp3');
 var beep_long = new Audio('./assets/beep_long.mp3');
 var beep_vide = new Audio('./assets/beep_vide.mp3');
+var nggyu = new Audio('./assets/nggyu.mp3');
 
 dictionnaire = {
     "a": ".-",
@@ -85,43 +88,73 @@ dictionnaire_morse = {
     "-----": "0"
 }
 
-function switchMode() {
+async function switchMode() {
+
+    if(click_counter < limite) {
+
+        if (!darkMode) {
+
+            document.querySelector("body").classList.remove("lightMode_body");
+            document.querySelector("body").classList.add("darkMode_body");
     
-    if (!darkMode) {
+            document.getElementById("entree_texte").classList.remove("lightMode_textarea");
+            document.getElementById("entree_texte").classList.add("darkMode_textarea");
+            document.getElementById("result").classList.remove("lightMode_textarea");
+            document.getElementById("result").classList.add("darkMode_textarea");
+    
+            document.getElementById("entree_morse").classList.remove("lightMode_textarea");
+            document.getElementById("entree_morse").classList.add("darkMode_textarea");
+            document.getElementById("result2").classList.remove("lightMode_textarea");
+            document.getElementById("result2").classList.add("darkMode_textarea");
+            
+            document.getElementById("bouton").innerText = "Mode clair"
+            darkMode = true;
+    
+        } else {
+    
+            document.querySelector("body").classList.remove("darkMode_body");
+            document.querySelector("body").classList.add("lightMode_body");
+    
+            document.getElementById("entree_texte").classList.add("lightMode_textarea");
+            document.getElementById("entree_texte").classList.remove("darkMode_textarea");
+            document.getElementById("result").classList.add("lightMode_textarea");
+            document.getElementById("result").classList.remove("darkMode_textarea");
+    
+            document.getElementById("entree_morse").classList.add("lightMode_textarea");
+            document.getElementById("entree_morse").classList.remove("darkMode_textarea");
+            document.getElementById("result2").classList.add("lightMode_textarea");
+            document.getElementById("result2").classList.remove("darkMode_textarea");
+    
+            document.getElementById("bouton").innerText = "Mode sombre"
+            darkMode = false;
+    
+        }
+    
+        click_counter = click_counter + 1
+    
+        if(click_counter == limite) {
+    
+            document.querySelector("body").classList.add("rickMode_body");
+            document.getElementById("entree_texte").classList.add("rickMode_textarea");
+            document.getElementById("result").classList.add("rickMode_textarea");
+            document.getElementById("entree_morse").classList.add("rickMode_textarea");
+            document.getElementById("result2").classList.add("rickMode_textarea");
+            document.getElementById("body").innerText = "Never gonna give you up"
+            document.getElementById("entree_texte").value = "Never gonna give you up";
+            document.getElementById("result").value = "Never gonna give you up";
+            document.getElementById("entree_morse").value = "Never gonna give you up";
+            document.getElementById("result2").value = "Never gonna give you up";
+            document.getElementById("bouton").innerText = "Mode rick"
+            document.getElementById("b_mode").innerText = "Mode chanson"
+            document.getElementById("b_mode").innerText = "Mode chanson"
+            document.getElementById("lien").innerText = "Youtube"
+            document.getElementById("lien").href = "https://youtu.be/dQw4w9WgXcQ"
 
-        document.querySelector("body").classList.remove("lightMode_body");
-        document.querySelector("body").classList.add("darkMode_body");
+            await new Promise(r => setTimeout(r, 700));
 
-        document.getElementById("entree_texte").classList.remove("lightMode_textarea");
-        document.getElementById("entree_texte").classList.add("darkMode_textarea");
-        document.getElementById("result").classList.remove("lightMode_textarea");
-        document.getElementById("result").classList.add("darkMode_textarea");
-
-        document.getElementById("entree_morse").classList.remove("lightMode_textarea");
-        document.getElementById("entree_morse").classList.add("darkMode_textarea");
-        document.getElementById("result2").classList.remove("lightMode_textarea");
-        document.getElementById("result2").classList.add("darkMode_textarea");
-        
-        document.getElementById("bouton").innerText = "Mode clair"
-        darkMode = true;
-
-    } else {
-
-        document.querySelector("body").classList.remove("darkMode_body");
-        document.querySelector("body").classList.add("lightMode_body");
-
-        document.getElementById("entree_texte").classList.add("lightMode_textarea");
-        document.getElementById("entree_texte").classList.remove("darkMode_textarea");
-        document.getElementById("result").classList.add("lightMode_textarea");
-        document.getElementById("result").classList.remove("darkMode_textarea");
-
-        document.getElementById("entree_morse").classList.add("lightMode_textarea");
-        document.getElementById("entree_morse").classList.remove("darkMode_textarea");
-        document.getElementById("result2").classList.add("lightMode_textarea");
-        document.getElementById("result2").classList.remove("darkMode_textarea");
-
-        document.getElementById("bouton").innerText = "Mode sombre"
-        darkMode = false;
+            nggyu.play();
+    
+        }
 
     }
 
