@@ -100,3 +100,16 @@ textarea {
     background-color: white;
     color: black;
 }
+
+.rickMode_body {
+    background: url("./assets/rick.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: black;
+}
+.rickMode_textarea {
+    background-color: #c8bae0;
+    color: black;
+}
