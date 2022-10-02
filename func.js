@@ -147,7 +147,7 @@ function traduire() {
 
     texte_final = "";
 
-    var texte = document.getElementById("entree_texte").value.split("");
+    var texte = document.getElementById("entree_texte").value.toLowerCase().split("");
 
     for (let i = 0; i < texte.length; i++) {
 
