@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3ae2504195.js" crossorigin="anonymous"></script>
+
+    <title>Traducteur de morse</title>
+</head>
+
+<body>
+    <div class="body_wrapper frm-vh-md-100">
+        <div class="body" data-bg-color="#E3F0FF">
+            <div class="f_content">
+                <div class="container">
+                    <div class="row">
+                        <div class="box">
+                            <div class="header text-center">
+                                <a href="#" class="logo">
+                                    <a href="https://github.com/DraquoDrass/morse_translator" target="_blank" class="btn btn-social btn-github">
+                                        <img class="icon" src="assets/img/github.png" width="30px" alt="">
+                                        Traducteur de morse
+                                    </a>
+                                </a>
+                            </div>
+                            <ul class="nav nav-tabs form_tab" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="l-tab" data-toggle="tab" href="#l"
+                                        role="tab" aria-controls="l" aria-selected="true">Alphabet vers morse</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="s-tab" data-toggle="tab" href="#s" role="tab"
+                                        aria-controls="s" aria-selected="false">Morse vers alphabet</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="l" role="tabpanel">
+                                        <div class="form-group">
+                                            <textarea class="form-control input-textarea" id="entree_texte" placeholder="Entrez votre texte en français"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control input-textarea"  id="result" placeholder="Ici, retrouvez le texte en morse"></textarea>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-6">
+                                                <button type="submit" class="btn thm_btn text-capitalize"  onclick="traduire()"><i class="fa-solid fa-earth-africa"></i>  Traduire</button>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <button type="submit" class="btn thm_btn text-capitalize" onclick="jouerSon()"><i class="fa-solid fa-volume-high"></i>  Jouer</button>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="tab-pane fade" id="s" role="tabpanel" aria-labelledby="s-tab">
+                                        <div class="form-group">
+                                            <textarea class="form-control input-textarea" id="entree_morse" placeholder="Entrez votre texte en morse"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control input-textarea" id="result2" placeholder="Ici, retrouvez le texte en français"></textarea>
+                                        </div>
+                                        <div class="form-group row">
+                                            <button type="submit" class="btn thm_btn text-capitalize" onclick="traduire_morse()"><i class="fa-solid fa-earth-africa"></i>  Traduire</button>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/morse.js"></script>
+
+</body>
+
+</html>
